@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P:wght@400&family=VT323:wght@400&display=swap');
 
 /* CSS Variables for Retro Color Scheme */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border: 3px solid cyan;
+    border-radius: 8px;
+    box-shadow: 0 0 20px lime;
+  }
+
+  
+  
 :root {
     --primary-bg: #0a0a0a;
     --secondary-bg: #1a1a2e;
@@ -544,17 +554,45 @@ body {
     align-items: center;
 }
 
-.pixel-character {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(45deg, 
-        var(--accent-cyan), 
-        var(--accent-green));
+.pixel-avatar {
+    width: 200px; /* Increased from 120px */
+    height: 200px;
+    margin: 0 auto 2rem;
     border: 3px solid var(--accent-cyan);
+    box-shadow: 
+        0 0 25px var(--shadow-color),
+        inset 0 0 25px rgba(255, 255, 255, 0.15);
+    animation: 
+        avatarGlow 3s ease-in-out infinite,
+        gradientShift 4s ease-in-out infinite;
     position: relative;
-    animation: characterBounce 2s ease-in-out infinite;
-    box-shadow: 0 0 20px var(--shadow-color);
-    image-rendering: pixelated;
+    overflow: hidden;
+    border-radius: 8px; /* More modern roundness */
+}
+
+.pixel-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: auto; /* Changed from pixelated to improve clarity */
+    filter: contrast(1.05) brightness(1.05); /* Enhance clarity slightly */
+}
+
+.pixel-avatar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 255, 0.03),
+        rgba(0, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
 }
 
 @keyframes characterBounce {
@@ -1068,12 +1106,25 @@ body {
 .contact-avatar {
     width: 100px;
     height: 100px;
-    background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
     border: 3px solid var(--accent-cyan);
     border-radius: 50%;
     box-shadow: 0 0 20px var(--shadow-color);
     animation: avatarPulse 3s ease-in-out infinite;
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
 
 @keyframes avatarPulse {
     0%, 100% { transform: scale(1); }
