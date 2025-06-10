@@ -241,7 +241,7 @@ body {
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-left: 100px;
+    margin-left: 95px;
     box-shadow: 
         0 0 20px var(--shadow-color),
         inset 0 0 20px rgba(255, 255, 255, 0.1);
